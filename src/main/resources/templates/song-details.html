@@ -1,15 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
-<html xmlns:th="http://www.thymeleaf.org" lang="it"></html>
+<html xmlns:th="http://www.thymeleaf.org" lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/app.css}">
     <title>Document</title>
 </head>
 <body>
-    <div>
-        <p th:text="${song}"></p>
+    <nav th:replace="~{navbar :: navbar('songs')}"></nav>
+    <div class="container text-center">
+        <h1 class="mb-3 mt-3" th:text="${songs.titolo}"></h1>
     </div>
-    
+
+    <div class="row justify-content-center">
+        <div class="col-3" th:replace="~{fragments :: details-music(${songs.artista}, ${songs.titolo}, ${songs.minuti}, ${songs.secondi})}"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
